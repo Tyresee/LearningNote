@@ -8,16 +8,19 @@
 
 -----------------------
 #### 可以尝试引用的功能
-> 猛男说过：歪子是个好人 <br>还有什么呢<br>天生傲骨
+> 还可以试试<br>引用
 
 -----------------------
 #### 然后感受一下代码引用的功能(两种方法)
 ```
-it seems to quote codes in this kinda way
-how could this be
-```
 
+```
+```js
+// system.out.print()
+console.log();
+
+	
+```
 	it seems to quote codes 
-	both can
-	and this 
+
 
