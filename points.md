@@ -21,3 +21,80 @@ let o = new Object;
 ### 形参 实参
 > 形参就是占位的，实参是调用函数时候真正传入的值</br>
 > 函数的实参可选时，往往传入一个无意义的占位符，通常用null占位，也可以用undefined占位
+
+### 柯里化
+> 柯里化是把*接受多个参数的函数*变换成接受一个*单一参数*
+> （最初函数的第一个参数）的函数，并且返回接受余下的    参数而且返回结果的新函数的技术</br>
+#### 柯里化前
+```
+ function add(a, b) {
+     return a + b;
+ } 
+ // 执行 add 函数，一次传入两个参数即可
+ add(10, 2) // 12
+
+```
+#### 柯里化后
+```
+ var add = function(a) {
+    return function(b) {
+        return a + b;
+    };
+ };
+ var addTen = add(10);
+ addTen(2); // 12
+```
+#### 那么我们为什么要使用柯里化呢？
+
+> 1、参数复用</br>
+ 2、延迟计算 </br>
+ 3、提前返回
+
+首先柯里化可以使得参数复用并且延迟计算，也就是说像上面的例子，比如我们的 a 值一直都是 10，只是 b 值在变化，那么这个时候用到柯里化，就可以减少一些重复性的传参。</br>比如 b 是 2，3，4,那么在柯里化前的调用就是：
+```
+add(10,2)
+add(10,3)
+add(10,4)
+```
+而在柯里化之后，就像上面的例子中写的，我们通过定义
+```
+var addTen = add(10);
+```
+将第一个参数 a 预置了 10，之后我们只需要调用
+```
+addTen(2)
+addTen(3)
+addTen(4)
+```
+而在这个过程中，如果使用柯里化前的代码，或当即就把结果计算出来，而在柯里化之后，我们可以现传入一个 10，然后在想得到真正结果的时候再传入另一个参数，体现了*延迟计算*</br>
+同时柯里化函数还可以 *提前返回*，很常见的一个例子，兼容现代浏览器以及IE浏览器的事件添加方法。我们正常情况不使用柯里化可能会这样写:</br>
+```
+var addEvent = function(el, type, fn,capture) {
+    if (window.addEventListener) {
+        el.addEventListener(type, function(e) {
+            fn.call(el, e);
+        }, capture);
+     } else if (window.attachEvent) {
+        el.attachEvent("on" + type, function(e) {
+            fn.call(el, e);
+        });
+    } 
+ };
+```
+这个时候我们没调用一次 addEvent，就会进行一次 if else 的判断，而其实具体用哪个方法进行方法的绑定的判断执行一次就已经知道了，所以我们可以使用柯里化来解决这个问题：
+```
+var addEvent = (function(){
+    if (window.addEventListener) {
+          return function(el, sType, fn, capture) {
+            el.addEventListener(sType, function(e) {
+                fn.call(el, e);
+            }, (capture));
+        };
+    } else if (window.attachEvent) {
+        return function(el, sType, fn, capture) {
+            el.attachEvent("on" + sType, function(e) {
+                fn.call(el, e);
+            });
+        };
+    }
+})();
