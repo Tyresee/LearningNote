@@ -124,3 +124,23 @@ let arr = [2,1,4,34,20]
 arr = arr.sort((a,b)=>a-b) //[1,2,4,20,34]
 ```
 
+### throw try catch
+throw语句用来抛出一个用户自定义的异常。当前函数的执行将被停止（throw之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个catch块。如果调用者函数中没有catch块，程序将会终止。
+```
+function getRectArea(width, height) {
+  if (isNaN(width) || isNaN(height)) {
+    throw "Parameter is not a number!";
+  }
+}
+
+try {
+  getRectArea(3, 'A');
+}
+catch(e) {
+  console.log(e);
+  // expected output: "Parameter is not a number!"
+}
+
+```
+
+
