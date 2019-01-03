@@ -143,7 +143,7 @@ catch(e) {
 
 ```
 
-### switch case
+### switch case (switch后面的值需要和case的值严格等)
 合并两种情况的写法
 ```
 switch (NUM) {
@@ -155,5 +155,17 @@ switch (NUM) {
     console.log('other case');
     break;
 }
-
+```
+### arguments 
+以下两种函数的声明是等价的
+```
+sayHi:(name,message) => {
+    console.log(`Hello${name}${message}`)
+}
+```
+```
+sayHi:()=>{
+    console.log(`Hello${arguments[0]}${arguments[1]}`)
+}
+```
 
