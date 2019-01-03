@@ -143,4 +143,17 @@ catch(e) {
 
 ```
 
+### switch case
+合并两种情况的写法
+```
+switch (NUM) {
+  case 1:
+  case 2:
+    console.log('case1 and case2');
+    break;
+  default:
+    console.log('other case');
+    break;
+}
+
 
