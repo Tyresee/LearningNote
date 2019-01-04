@@ -168,4 +168,51 @@ sayHi:()=>{
     console.log(`Hello${arguments[0]}${arguments[1]}`)
 }
 ```
+### 贝塞尔函数&动画
+transition 过渡属性后面的参数有四个（属性名，持续时间、规定速度效果的速度曲线、过渡效果的开始时间）
+
+针对速度效果的速度曲线展开讨论，有如下几种情况：
+linear--匀速
+ease--慢->快->慢
+ease-in--慢->匀
+ease-out--匀->慢
+ease-in-out--慢->快->慢
+cubic-bezier(n,n,n,n) 自定义速度函数
+<!-- transition: top .4s cubic-bezier(0.39,-0.4,0.83,0.23), left .4s linear; -->
+HTML
+```
+<div class="father">
+  <div class="son"></div>
+</div>
+```
+SCSS
+```
+.father{
+  width: 300px;
+  height: 300px;
+  background: pink;
+  position:relative;
+  transition:all 1s;
+  .son{
+    position:absolute;
+    left:150px;
+    bottom:150px;
+    width: 10px;
+    height: 10px;
+    border-radius:5px;
+    background: grey;
+    transition:bottom 1s cubic-bezier(.23,-0.51,.71,-0.44),left 1s linear;
+    
+  }
+}
+```
+JS
+```
+let son = document.getElementsByClassName('son')
+son[0].style.left = '300px'       
+son[0].style.bottom = '0' 
+```
+  
+
+
 
