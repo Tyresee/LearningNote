@@ -178,6 +178,7 @@ ease-in--慢->匀
 ease-out--匀->慢
 ease-in-out--慢->快->慢
 cubic-bezier(n,n,n,n) 自定义速度函数
+可参考http://cubic-bezier.com/
 <!-- transition: top .4s cubic-bezier(0.39,-0.4,0.83,0.23), left .4s linear; -->
 HTML
 ```
@@ -212,6 +213,10 @@ let son = document.getElementsByClassName('son')
 son[0].style.left = '300px'       
 son[0].style.bottom = '0' 
 ```
+
+### IP地址
+子网可以理解 为用集线器连接起来的几台计算机 ，我们将它看作一个单位，称为子网。 将子网通过路由器连接起来，就形成了一个网络。
+在网络中，所有的设备都会被分配一个地址。这个地址就相当于现实 中某条路上的“×× 号 ×× 室”。其中“号”对应的号码是分配给整个子 网的，而“室”对应的号码是分配给子网中的计算机的，这就是网络中的 地址。“号”对应的号码称为网络号，“室”对应的号码称为主机号，这个 地址的整体称为 IP 地址
   
 
 
