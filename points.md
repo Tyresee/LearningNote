@@ -219,6 +219,9 @@ son[0].style.bottom = '0'
 在网络中，所有的设备都会被分配一个地址。这个地址就相当于现实 中某条路上的“×× 号 ×× 室”。其中“号”对应的号码是分配给整个子 网的，而“室”对应的号码是分配给子网中的计算机的，这就是网络中的 地址。“号”对应的号码称为网络号，“室”对应的号码称为主机号，这个 地址的整体称为 IP 地址
 
 ![IP的基本思路](https://upload-images.jianshu.io/upload_images/7557569-9d69a22dda78f957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### wepy中点击组件元素，触发父容器的方法
+
   
 
 
