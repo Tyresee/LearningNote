@@ -221,6 +221,58 @@ son[0].style.bottom = '0'
 ![IP的基本思路](https://upload-images.jianshu.io/upload_images/7557569-9d69a22dda78f957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### wepy中点击组件元素，触发父容器的方法
+组件：
+HTML:
+```
+<template>
+  <view class="compoWrapper" > 
+    <text class="txt"  @tap.stop="execFunc">点击触发组件事件execFunc</text>
+   </view> 
+</template>
+```
+JS
+```
+<script>
+  import wepy from 'wepy'
+  export default class compo extends wepy.component {
+    data = {
+    }
+    methods = {
+      execFunc: ()=> {
+        this.$emit('childFn', 100)
+      }
+    }
+    props = {
+    }
+  }
+</script>
+```
+
+页面：
+HTML:
+```
+<template>
+    <LongTapPopupMenu class="longTapPopupMenu" @childFn.user="pageFunc"></LongTapPopupMenu>
+</template>
+```
+JS
+```
+<script>
+  import wepy from 'wepy'
+  export default class pageInstance extends wepy.page {
+    data = {
+    }
+    methods = {
+      pageFunc: ()=> {
+        console.log('doing page thing');
+      }
+    }
+    props = {
+    }
+  }
+</script>
+```
+
 
   
 
