@@ -276,6 +276,36 @@ JS
 
 ### 普遍认为我们使用双冒号:: 来表示伪元素 (而不是像伪类: hover，:first-child)。 如果您要添加 IE8 的支持，最好使用: 来代替。 其他所有的浏览器和较新版本的 IE 支持双冒号
 
+### 在遮罩层出现后，禁止页面的滚动事件。目前碰到的有效的解决办法
+```
+<template>
+  <view class="wrapper {{stopScroll?'stop-scroll':''}}" >
+    <view class="modal">
+    <view/>
+  <view/>
+<template/>
+```
+```
+<script>
+  export default class IndexPage extends wepy.page {
+    data = {
+      modalShow:false
+    }
+    computed = {   
+      stopScroll(){
+        return this.modalShow
+      }
+    }
+  }
+<script/>
+```
+```
+.stop-scroll{
+  height: 100vh;//100%的视窗高度,（1vh就是视窗高度的1%）
+  overflow: hidden;
+}
+```
+
 
   
 
