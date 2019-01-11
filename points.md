@@ -305,6 +305,21 @@ JS
   overflow: hidden;
 }
 ```
+### vue项目中进行rem的适配
+index.html的<header>中加上
+```
+  <script>
+    function rem() {
+      var html = window.document.documentElement
+      var width = Math.min(html.getBoundingClientRect().width, 500)
+      html.style.fontSize = width * 100 / 750 + 'px'
+    }
+    rem()
+    window.onresize = function () { rem() }
+  </script>
+```
+在其他的组件和页面中可以用rem来写了。比如小程序中120rpx可以写成1.2rem；200rpx可以携程2rem。
+
 
 
   
