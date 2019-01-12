@@ -322,7 +322,4 @@ index.html的<header>中加上
 
 
 
-  
-
-
-
+### vue项目中修改config相关的东西时，要重新yarn dev编译！！
