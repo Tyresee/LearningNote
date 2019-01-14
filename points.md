@@ -329,3 +329,26 @@ index.html的<header>中加上
 ```
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 ```
+### 测试H5
+yarn build 完了以后，把dist文件夹发给后台部署
+
+### oss上的图片加载失败的话，需要做默认占位图
+html:  
+```
+<img class="avatar" :src="item.image" :onerror="defaultImg" />
+
+```
+<script><script/> 标签里
+
+```
+  let defaultImg = require('@/assets/img/defaultAvatar.png')
+  .
+  .
+  .
+    data() {
+      return {
+        defaultImg: 'this.src="' + require('@/assets/img/defaultAvatar.png') + '"'
+      }
+    }
+
+```
