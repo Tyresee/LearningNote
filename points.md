@@ -324,5 +324,8 @@ index.html的<header>中加上
 
 ### vue项目中修改config相关的东西时，要重新yarn dev编译！！
 
-### 如何判断页面的滚动方向
 ### 如何在vue中完成上拉加载下一页（分页）
+### 禁止H5页面缩放，就在index.html中的header加上
+```
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+```
