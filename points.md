@@ -338,17 +338,17 @@ html:
 <img class="avatar" :src="item.image" :onerror="defaultImg" />
 
 ```
-<script><script/> 标签里
+"script"标签里
 
 ```
-  let defaultImg = require('@/assets/img/defaultAvatar.png')
-  .
-  .
-  .
-    data() {
-      return {
-        defaultImg: 'this.src="' + require('@/assets/img/defaultAvatar.png') + '"'
-      }
-    }
+   let defaultImg = require('@/assets/img/defaultAvatar.png')
+   ...
+     data() {
+       return {
+         defaultImg: 'this.src="' + require('@/assets/img/defaultAvatar.png') + '"'
+       }
+     }
 
 ```
+### 双方括号指的是“属性”的“特性”
+只有内部才用的特性（attribute）时，描述了属性（property）的各种特征。 ECMA-262 定义这些特性是为了实现 JavaScript 引擎用的，因此在 JavaScript 中不能直接访问它们。为了 表示特性是内部值，该规范把它们放在了两对儿方括号中，例如[[Enumerable]]
