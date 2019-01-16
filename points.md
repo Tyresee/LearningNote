@@ -361,8 +361,29 @@ html:
 
 </br>
 
-![IP的基本思路](https://upload-images.jianshu.io/upload_images/7557569-e9e0479e3d53dc61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
- 
+![Global对象的其他属性](https://upload-images.jianshu.io/upload_images/7557569-e9e0479e3d53dc61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+
+### 埋点
+“埋点”就是在页面中的某些元素中加入一些‘触发’，可以通过这种方式，页面可以监听并统计用户行为。
+
+### 如何自己实现一个typeof
+曾经碰到的一个面试题。没有碰到需要自己实现类型检测的场景。这个问题在《js高级程序设计》中找到了答案。
+> 5.2.1 检测数组</br>
+> 自从 ECMAScript 3 做出规定以后，就出现了确定某个对象是不是数组的经典问题。对于一个网页， 或者一个全局作用域而言，使用 instanceof 操作符就能得到满意的结果：
+> ```
+> if (value instanceof Array){ //对数组执行某些操作 }
+> ```
+在ECMAScript5里新增了针对数组的类型检测函数isArray,支持 Array.isArray()方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 10.5+和 Chrome。要在尚未实现这个方法中的浏览器中准确检测数组，需要向下面这样操作(《js高级程序设计》第22章的22.1.1节)：
+```
+function isArray(value){
+   return Object.prototype.toString.call(value) == "[object Array]"
+ }
+```
+为什么要这么做呢？
+> **JavaScript 内置的类型检测机制并非完全可靠。**
+> 事实上，发生错误否定及错误肯定的情况也不在少 数。比如说 typeof 操作符吧，由于它有一些无法预知的行为，经常会导致检测数据类型时得到不靠谱 的结果。Safari（直至第 4 版）在对正则表达式应用 typeof 操作符时会返回"function"，因此很难确 定某个值到底是不是函数。
+
+
 
 
 
