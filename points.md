@@ -381,8 +381,20 @@ function isArray(value){
 ```
 为什么要这么做呢？
 > **JavaScript 内置的类型检测机制并非完全可靠。**
-> 事实上，发生错误否定及错误肯定的情况也不在少 数。比如说 typeof 操作符吧，由于它有一些无法预知的行为，经常会导致检测数据类型时得到不靠谱 的结果。Safari（直至第 4 版）在对正则表达式应用 typeof 操作符时会返回"function"，因此很难确 定某个值到底是不是函数。
+> 事实上，发生错误否定及错误肯定的情况也不在少 数。比如说 typeof 操作符吧，*由于它有一些无法预知的行为，经常会导致检测数据类型时得到不靠谱 的结果*。Safari（直至第 4 版）在对正则表达式应用 typeof 操作符时会返回"function"，因此很难确 定某个值到底是不是函数。
+> 
+ 
+用这个思路同样可以进行别的数据类型的检测
+```
+function isArray(value){
+ return Object.prototype.toString.call(value) == "[object Array]"; }
 
+ function isFunction(value){
+ return Object.prototype.toString.call(value) == "[object Function]"; }
+
+function isRegExp(value){
+   return Object.prototype.toString.call(value) == "[object RegExp]"; }
+```
 
 
 
