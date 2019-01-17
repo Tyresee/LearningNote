@@ -396,6 +396,14 @@ function isRegExp(value){
    return Object.prototype.toString.call(value) == "[object RegExp]"; }
 ```
 
-
+### return 只能用在函数中，不能脱离函数使用
+在控制台中执行如下代码是会报错的
+```
+return 1
+```
+怎么修正呢?答：改成立即执行函数
+```
+(()=>{ return 1 })()
+```
 
 
