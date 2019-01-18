@@ -404,6 +404,9 @@ return 1
 怎么修正呢?答：改成立即执行函数
 ```
 (()=>{ return 1 })()
+
 ```
+
+### 好用的电子书网站http://www.booklist.mobi/
 
 
