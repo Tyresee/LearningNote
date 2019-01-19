@@ -409,4 +409,9 @@ return 1
 
 ### 好用的电子书网站http://www.booklist.mobi/
 
+### 过滤掉“非值”
+```
+let a = [1,2,false,'false','',undefined,null,{}]
+a.filter(Boolean)  //=>[1,2,'false',{}]
+```
 
