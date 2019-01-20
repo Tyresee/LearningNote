@@ -414,4 +414,13 @@ return 1
 let a = [1,2,false,'false','',undefined,null,{}]
 a.filter(Boolean)  //=>[1,2,'false',{}]
 ```
+### object.hasOwnProperty()用来判断某个属性是来自原型链还是自身的属性
+
+```
+let o = new Object
+o.prop = 'something'
+o.hasOwnProperty('prop') //=>true  这是自身的属性
+o.hasOwnProperty('toString') //=>false  toString是原型链上继承的方法
+```
+
 
