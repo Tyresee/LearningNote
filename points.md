@@ -423,4 +423,7 @@ o.hasOwnProperty('prop') //=>true  这是自身的属性
 o.hasOwnProperty('toString') //=>false  toString是原型链上继承的方法
 ```
 
+### wepy中@tap的函数中传参后，在方法中接收并打印，发现没有接收到，只是打印了事件对象e
+后来发现是因为此代码块中的 idx 并没有用wx:for-index="idx"声明
+
 
