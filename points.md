@@ -426,6 +426,12 @@ o.hasOwnProperty('toString') //=>false  toString是原型链上继承的方法
 ### wepy中@tap的函数中传参后，在方法中接收并打印，发现没有接收到，只是打印了事件对象e
 后来发现是因为此代码块中的 idx 并没有用wx:for-index="idx"声明
 
-###
+### 深拷贝
+```
+let obj = {a:1}
+let shallowCopyObj = a //浅拷贝，shallowCopyObj的指针指向obj
+let deepCopyObj = JSON.parse(JSON.stringify(a)) //深拷贝，deepCopyObj的指针并不指向obj
+
+```
 
 
