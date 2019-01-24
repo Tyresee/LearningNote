@@ -434,4 +434,16 @@ let deepCopyObj = JSON.parse(JSON.stringify(a)) //深拷贝，deepCopyObj的指�
 
 ```
 
+### 给vscode设置系统中没有的字体
+先在网上下载相应的tff文件,双击即可安装到系统
+然后在vscode中点击command+','进入设置，搜索fontFamily,然后在右边用新的键值对覆盖默认设置。
 
+默认设置：
+```
+"editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+```
+用如下设置覆盖：
+默认设置：
+```
+"editor.fontFamily": "'Roboto Mono',Menlo, Monaco, 'Courier New', monospace",
+```
