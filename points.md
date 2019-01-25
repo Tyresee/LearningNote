@@ -447,3 +447,11 @@ let deepCopyObj = JSON.parse(JSON.stringify(a)) //深拷贝，deepCopyObj的指�
 ```
 "editor.fontFamily": "'Roboto Mono',Menlo, Monaco, 'Courier New', monospace",
 ```
+
+### Array.prototype.join()
+```
+let a = [1,2,3,4]
+a.join('||')  // =>"1||2||3||4"
+a.join(undefined)  // =>"1,2,3,4"
+
+```
