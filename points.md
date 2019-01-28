@@ -455,4 +455,44 @@ a.join('||')  // =>"1||2||3||4"
 a.join(undefined)  // =>"1,2,3,4"
 
 ```
-### 
+### grid布局
+CSS
+```
+.wrapper {
+  display: grid;
+  grid-template-columns: 30% 20% 40% 10%;
+  /* grid-template-rows: 80px 70px; */
+}
+.item {
+  text-align: center;
+  color: blueviolet;
+  font-size: 30px;
+  margin:0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.item>div{
+  word-wrap: break-word;
+  word-break:break-all;
+}
+.item:nth-child(odd) {
+  background-color: rgba(44, 167, 249, 0.7);
+}
+.item:nth-child(even) {
+  background-color: rgba(44, 167, 249, 0.9);
+}
+```
+HTML
+```
+<div class="wrapper">
+  <div class="item item1"><div>1</div></div>
+  <div class="item item2"><div>1</div></div>
+  <div class="item item3"><div>1</div></div>
+  <div class="item item4"><div>111111111111</div></div>
+  <div class="item item5"><div>1</div></div>
+  <div class="item item6"><div>1</div></div>
+  <div class="item item7"><div>1</div></div>
+</div>
+```
