@@ -496,3 +496,44 @@ HTML
   <div class="item item7"><div>1</div></div>
 </div>
 ```
+
+### this和箭头函数
+```
+window.n = 'window name'
+var obj = {
+    n: 'obj name',
+    say: function(){
+        console.log(this.n)
+    }
+}
+
+obj.say() //=>'obj name'
+```
+
+```
+window.n = 'window name'
+var obj = {
+    n: 'obj name',
+    say:()=>{
+        console.log(this.n)
+    }
+}
+
+obj.say() //=>'window name'
+```
+```
+window.n = 'window name'
+let obj = {
+    n: 'obj name',
+    sayN(){
+        console.log(this.n)
+    }
+}
+
+let fn = obj.sayN
+fn() //=>'window name'
+```
+在对象中分别用function关键词和箭头函数来作为say的值,对应的this是不同的。
+箭头函数的this看外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this是window
+
+> 
