@@ -536,4 +536,8 @@ fn() //=>'window name'
 在对象中分别用function关键词和箭头函数来作为say的值,对应的this是不同的。
 箭头函数的this看外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this是window
 
-> 
+
+### 碰到小程序上面关于filter: grayscale(1)导致的问题
+在一个scroll-view里某个部分使用这个属性，在滚动时，出现类似"迟滞"、“残影”的bug。这个问题只在真机上出现（多个机型）,在模拟器上没有重现,在页面底部的"确认下单"按钮（固定位置的元素）也没有出现这种问题。所以推断是在scroll-view中滚动元素的bug。
+![Global对象的其他属性](https://upload-images.jianshu.io/upload_images/7557569-b88fac92fe3c2b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+解决办法：用灰色图片来取代filter: grayscale(1)的方案。
