@@ -541,3 +541,7 @@ fn() //=>'window name'
 在一个scroll-view里某个部分使用这个属性，在滚动时，出现类似"迟滞"、“残影”的bug。这个问题只在真机上出现（多个机型）,在模拟器上没有重现,在页面底部的"确认下单"按钮（固定位置的元素）也没有出现这种问题。所以推断是在scroll-view中滚动元素的bug。
 ![Global对象的其他属性](https://upload-images.jianshu.io/upload_images/7557569-b88fac92fe3c2b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 解决办法：用灰色图片来取代filter: grayscale(1)的方案。
+
+### ES6的decorator
+> 修饰器是一个对类进行处理的函数。修饰器函数的第一个参数，就是所要修饰的目标类</br>
+> 修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。也就是说，修饰器本质就是编译时执行的函数
