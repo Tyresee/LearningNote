@@ -545,3 +545,46 @@ fn() //=>'window name'
 ### ES6的decorator
 > 修饰器是一个对类进行处理的函数。修饰器函数的第一个参数，就是所要修饰的目标类</br>
 > 修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。也就是说，修饰器本质就是编译时执行的函数
+
+### DOM事件级别
+DOM0中关于事件的标准 element.onclick = ()=>{}
+DOM1中没有制定事件相关的标准
+DOM2中关于事件的标准 element.addEventListener('click',()=>{},false) //false 代表“捕获”跟"冒泡"
+DOM3中关于事件的标准 element.addEventListener('keyup',()=>{},false) //false 代表“捕获”跟"冒泡",在制定DOM3的时候，在DOM2中事件相关的标准的基础上增加了一些事件监听
+
+### DOM事件模型
+捕获(从不具体到具体) 冒泡（从具体到不具体）
+
+### DOM事件流(简单)
+三个阶段：1捕获 2目标阶段(从捕获到达目标元素的阶段) 3冒泡（从目标对象再上传到window对象）
+
+### DOM事件捕获（从不具体到具体）的具体流程
+第一个接受到事件的对象：window
+过程：window->document->html->body->元素一层一层往下一直到目标元素
+冒泡对象跟上述顺序相反
+
+### event对象的常见应用
+1.event.preventDefault() 阻止默认事件，比如阻止a标签默认的跳转行为
+2.event.stopPropagation() 阻止冒泡
+3.event.stopImmediatePropagation() 如果有多个相同类型事件的事件监听函数绑定到同一个元素，当该类型的事件触发时，它们会按照被添加的顺序执行。如果其中某个监听函数执行了 event.stopImmediatePropagation() 方法，则当前元素剩下的监听函数将不会被执行
+```
+var btn = document.getElementById("myBtn")
+btn.addEventListener("click", (e)=>{
+  alert('doing one')
+}, false)
+btn.addEventListener("click", (e)=>{
+  alert('doing two')
+  e.stopImmediatePropagation()
+}, false) //这几个事件处理函数回执行到此处
+btn.addEventListener("click", (e)=>{
+  alert('doing three')
+}, false)
+
+```
+
+event.target 当前被点击的元素  
+event.currentTarget 当前所绑定的事件 
+
+### 自定义事件
+let eve = new Event('custome')
+el.addEventListener()
