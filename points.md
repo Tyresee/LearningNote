@@ -562,6 +562,34 @@ DOM3中关于事件的标准 element.addEventListener('keyup',()=>{},false) //fa
 第一个接受到事件的对象：window
 过程：window->document->html->body->元素一层一层往下一直到目标元素
 冒泡对象跟上述顺序相反
+HTML
+```
+<div id="wrapper">
+  <button id="btn"></button>
+</div>
+```
+```
+var wrapper = document.getElementById("wrapper")
+var btn = document.getElementById("btn")
+
+btn.addEventListener("click", function (e) {
+  console.log('doing bubbling one')
+}, false)
+
+wrapper.addEventListener("click", function (e) {
+  console.log('doing capture')
+  e.stopPropagation() //会在这里停止执行，其他几个函数都不会执行,包括“doing bubbling one”也不会打印
+}, true)
+
+btn.addEventListener("click", function (e) {
+  console.log('doing bubbling two')
+}, false)
+
+btn.addEventListener("click", function (e) {
+  console.log('doing bubbling three')
+}, false)
+```
+
 
 ### event对象的常见应用
 1.event.preventDefault() 阻止默认事件，比如阻止a标签默认的跳转行为
@@ -569,12 +597,13 @@ DOM3中关于事件的标准 element.addEventListener('keyup',()=>{},false) //fa
 3.event.stopImmediatePropagation() 如果有多个相同类型事件的事件监听函数绑定到同一个元素，当该类型的事件触发时，它们会按照被添加的顺序执行。如果其中某个监听函数执行了 event.stopImmediatePropagation() 方法，则当前元素剩下的监听函数将不会被执行
 ```
 var btn = document.getElementById("myBtn")
-btn.addEventListener("click", (e)=>{
+btn.addEventListener("click", (e)=>{ 
   alert('doing one')
 }, false)
 btn.addEventListener("click", (e)=>{
   alert('doing two')
-  e.stopImmediatePropagation()
+  e.stopImmediatePropagation()//后续的监听函数不会执行，但是本函数下的代码会执行完
+  alert('doing two..') //这里会执行
 }, false) //这几个事件处理函数回执行到此处
 btn.addEventListener("click", (e)=>{
   alert('doing three')
@@ -585,6 +614,7 @@ btn.addEventListener("click", (e)=>{
 event.target 当前被点击的元素  
 event.currentTarget 当前所绑定的事件 
 
+> 通过 addEventListener()添加的事件处理程序只能使用 removeEventListener()来移除；移 除时传入的参数与添加处理程序时使用的参数相同
 ### 自定义事件
 let eve = new Event('custome')
 el.addEventListener()
