@@ -618,3 +618,5 @@ event.currentTarget 当前所绑定的事件
 ### 自定义事件
 let eve = new Event('custome')
 el.addEventListener()
+
+### 过年啦。。。
