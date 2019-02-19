@@ -620,3 +620,6 @@ let eve = new Event('custome')
 el.addEventListener()
 
 ### 过年啦。。。
+
+### Array.from 可以将“类似数组的对象”、set、map等数据结构变成数组
+所谓“类似数组的对象”本质上就是有length属性的对象,也就是说，某个对象有length属性，那么它就是“类似数组的对象”
