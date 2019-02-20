@@ -619,7 +619,10 @@ event.currentTarget 当前所绑定的事件
 let eve = new Event('custome')
 el.addEventListener()
 
-### 过年啦。。。
-
 ### Array.from 可以将“类似数组的对象”、set、map等数据结构变成数组
 所谓“类似数组的对象”本质上就是有length属性的对象,也就是说，某个对象有length属性，那么它就是“类似数组的对象”
+
+### 快速地生成一个长度为10的数组
+```
+let a = Array.from({length:10}).map((e,i)=>i) //=>[0,1,2,3,4,5,6,7,8,9]
+```
