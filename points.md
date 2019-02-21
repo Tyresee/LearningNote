@@ -159,13 +159,32 @@ switch (NUM) {
 ### arguments 
 以下两种函数的声明是等价的
 ```
-sayHi:(name,message) => {
+var sayHi = function(name,message){
     console.log(`Hello${name}${message}`)
 }
 ```
 ```
-sayHi:()=>{
+var sayHi = function(){
     console.log(`Hello${arguments[0]}${arguments[1]}`)
+}
+```
+
+用箭头函数的话，写法有区别，因为箭头函数不绑定arguments，取而代之用...操作符解决
+
+```
+let sayHi = (name,message)=>{
+    console.log(`Hello${name}${message}`)
+}
+```
+```
+let sayHi = (...arguments)=>{
+    console.log(`Hello${arguments[0]}${arguments[1]}`)
+}
+```
+//此处的arguments不是非箭头函数中的关键词，只是形参，可以替换成别的,可以写成下面这样
+```
+let sayHi = (...arg)=>{
+    console.log(`Hello${arg[0]}${arg[1]}`)
 }
 ```
 ### 贝塞尔函数&动画
