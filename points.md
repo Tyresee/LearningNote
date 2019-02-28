@@ -653,3 +653,5 @@ parseInt('123', 5) // 将'123'看作5进制数，返回十进制数38 => 1*5^2 +
 
 ### webpack配置后，执行yarn build碰到了问题
 ![webpack配置后，执行yarn build碰到了问题](https://i.loli.net/2019/02/28/5c77e24b60587.png)
+
+google搜索“Plugin/Preset files are not allowed to export objects, only functions”这个报错,找到https://github.com/babel/babel/issues/8707，在下面提到了.babelrc的写法，将其修正为与webpack.common.js中对应的设置相同，即可成功build。
