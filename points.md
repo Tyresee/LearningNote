@@ -658,3 +658,6 @@ google搜索“Plugin/Preset files are not allowed to export objects, only funct
 
 ### 小程序的view组件有几个事件句柄没有在文档中体现出来
 bindtouchend bindtouchstart bindtouchmove
+
+### justify-content: end 没有生效？
+因为正确写法是：justify-content: flex-end
