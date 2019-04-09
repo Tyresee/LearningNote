@@ -661,3 +661,31 @@ bindtouchend bindtouchstart bindtouchmove
 
 ### justify-content: end 没有生效？
 因为正确写法是：justify-content: flex-end
+
+### 在create-react-app 创建的项目中引入scss
+yarn add sass-loader node-sass -D
+
+### css中的 @import 末尾的分号不能省略
+```
+@import '~antd/dist/antd.css';  //√
+@import '~antd/dist/antd.css'   //X
+```
+
+### 执行 npm run eject 时，报错 Remove untracked files, stash or commit any changes, and try again
+```
+git init 
+git add .
+git commit -am 'commit before ejecting'
+```
+
+### react 用户定义组件必须以大写字母开头
+```
+class something extends React.component{
+  
+}   // X
+
+class Something extends React.component{
+  
+}   // √
+
+```
