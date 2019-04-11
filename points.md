@@ -689,3 +689,20 @@ class Something extends React.component{
 }   // √
 
 ```
+
+### 一个箭头函数的细节
+```
+let a = param => {name:'whatever'}  //X
+
+```
+这是因为花括号 {} 里面的代码被解析为一系列语句,而非对象字面量的组成部分
+所以，记得用圆括号把对象字面量包起来：
+```
+let a = param => ( {name:'whatever'} ) //√
+```
+
+### 微法院项目图片太多导致编译报错
+![微法院项目图片太多导致yarn build /yarn dev报错](https://i.loli.net/2019/04/11/5caea1ac4e107.png)
+
+google ENFILE: file table overflow
+第一个结果：https://github.com/meteor/meteor/issues/8057
