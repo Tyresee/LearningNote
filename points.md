@@ -678,13 +678,13 @@ git add .
 git commit -am 'commit before ejecting'
 ```
 
-### react 用户定义组件必须以大写字母开头
+### react 用户定义组件必须以大写字母开头,否则报错：TypeError: Super expression must either be null or a function
 ```
 class something extends React.component{
   
 }   // X
 
-class Something extends React.component{
+class Something extends React.Component{
   
 }   // √
 
