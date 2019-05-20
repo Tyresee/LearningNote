@@ -706,3 +706,9 @@ let a = param => ( {name:'whatever'} ) //√
 
 google ENFILE: file table overflow
 第一个结果：https://github.com/meteor/meteor/issues/8057
+
+### 使用 console.log() 来打印某个对象，并且，两次打印之间，还会对这个对象进行修改，最后我们查看打印的结果发现，修改前的打印和修改后的打印，是一样的
+解决方法：
+> 打印一个从这个对象复制出来的对象。
+> 使用资源面中的断点来调试
+> 使用 JSON.stringify() 方法处理打印的结果
