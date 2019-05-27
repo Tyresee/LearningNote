@@ -712,3 +712,20 @@ google ENFILE: file table overflow
 > 打印一个从这个对象复制出来的对象。
 > 使用资源面中的断点来调试
 > 使用 JSON.stringify() 方法处理打印的结果
+
+### yarn dev 一个vue项目，报错：{ parser: "babylon" } is deprecated; we now treat it as { parser: "babel" }
+解决办法：
+找到你的工程文件夹里的 YourProName\node_modules\vue-loader\lib\template-compiler\index.js
+```
+//将以下代码
+if (!isProduction) {
+  code = prettier.format(code, { semi: false, parser: 'babylon' })
+}
+ 
+//修改为：
+ 
+if (!isProduction) {
+  code = prettier.format(code, { semi: false, parser: 'babel' })
+}
+
+```
