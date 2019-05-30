@@ -741,3 +741,7 @@ if (!isProduction) {
 
 ### webstorm打开项目找不到src
 解决办法：找到.idea文件夹，删掉
+
+### axios 使用post方式传递参数，后端接受不到
+解决办法：https://segmentfault.com/a/1190000012635783?utm_source=tag-newest
+引入qs
