@@ -745,3 +745,7 @@ if (!isProduction) {
 ### axios 使用post方式传递参数，后端接受不到
 解决办法：https://segmentfault.com/a/1190000012635783?utm_source=tag-newest
 引入qs
+
+### 引入mint-ui中的cell布局组件，@click触发不了事件函数
+解决办法：用@click.native;(在 Vue 2.0 中，为自定义组件绑定原生事件必须使用 .native 修饰符：
+<my-component @click.native="handleClick">Click Me 官方文档有说)
