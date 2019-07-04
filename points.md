@@ -749,3 +749,20 @@ if (!isProduction) {
 ### 引入mint-ui中的cell布局组件，@click触发不了事件函数
 解决办法：用@click.native;(在 Vue 2.0 中，为自定义组件绑定原生事件必须使用 .native 修饰符：
 <my-component @click.native="handleClick">Click Me 官方文档有说)
+
+### ArrayBuffer\TypedArray\DataView
+ArrayBuffer对象：代表内存之中的一段二进制数据，可以通过“视图”进行操作。“视图”部署了数组接口，这意味着，可以用数组的方法操作内存。
+TypedArray视图：共包括 9 种类型的视图，比如Uint8Array（无符号 8 位整数）数组视图, Int16Array（16 位整数）数组视图, Float32Array（32 位浮点数）数组视图等等。
+DataView视图：可以自定义复合格式的视图，比如第一个字节是 Uint8（无符号 8 位整数）、第二、三个字节是 Int16（16 位整数）、第四个字节开始是 Float32（32 位浮点数）等等，此外还可以自定义字节序。
+简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
+
+### 上传图片(ArrayBuffer的应用)
+上传图片需要处理图片的宽高分辨率等等，图片本身是fileObj,需要转成base64,再转canvas,再转ArrayBuffer,再转Blob，再转formData,然后上传.
+
+### FormData
+现代 Web 应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest 2级为此定义了 FormData 类型。FormData 为序列化表单以及创建与表单格式相同的数据（用于通过 XHR 传输）提供 了便利。
+
+### Service Worker 
+原生App拥有Web应用通常所不具备的富离线体验，定时的静默更新，消息通知推送等功能。而新的Service workers标准让在Web App上拥有这些功能成为可能。
+一个 service worker 是一段运行在浏览器后台进程里的脚本，它独立于当前页面，提供了那些不需要与web页面交互的功能在网页背后悄悄执行的能力。在将来，基于它可以实现消息推送，静默更新以及地理围栏等服务，但是目前它首先要具备的功能是拦截和处理网络请求，包括可编程的响应缓存管理。
+为什么说这个API是一个非常棒的API呢？因为它使得开发者可以支持非常好的离线体验，它给予开发者完全控制离线数据的能力。
