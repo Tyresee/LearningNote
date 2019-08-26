@@ -768,6 +768,36 @@ DataView视图：可以自定义复合格式的视图，比如第一个字节是
 为什么说这个API是一个非常棒的API呢？因为它使得开发者可以支持非常好的离线体验，它给予开发者完全控制离线数据的能力。
 
 ### 想用a分支上的内容覆盖b分支上的内容
-git checkout b
-git reset --hard origin/master
+```
+git checkout b <br>
+git reset --hard origin/master <br>
 git push -f
+```
+
+### list的最后一项没有border-bottom
+
+CSS
+```
+<ul>
+  <li> 11111</li>
+  <li> 11111</li>
+  <li> 11111</li>
+  <li> 11111</li>
+  <li> 11111</li>
+  <li> 11111</li>
+</ul>
+```
+HTML
+```
+ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+  border:1px solid red;
+  width:400px;
+}
+
+ul>li+li {
+  border-top:1px solid red;
+}
+```
