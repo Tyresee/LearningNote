@@ -801,3 +801,59 @@ ul>li+li {
   border-top:1px solid red;
 }
 ```
+
+### vue项目里引入pdf.js实现pdf的预览功能
+1.在这个链接下载pdf.js整个包http://mozilla.github.io/pdf.js/getting_started/#download  作为一个独立项目部署到服务器上(获取访问地址)
+2.创建pdfViewer组件，并在路由中注册
+pdfViewer/index.vue
+```
+<template>
+  <div>
+    <iframe :src="pdfUrl" class="pdf-window" width="100%" style="height: 100vh;">
+    </iframe>
+  </div>
+</template>
+
+<script>
+  const pdfPrefix = 'https://testwecourt.odrcloud.cn/ghodr-zwwx/pdfjs/web/viewer.html'//pdf.js部署到服务器可访问的url
+  export default {
+    name: 'pdfViewer',
+    data() {
+      return {
+        pdfUrl: '',
+      };
+    },
+    mounted() {
+      this.pdfUrl = `${pdfPrefix}?file=${encodeURIComponent(this.$route.params.fileUrl)}`;
+    },
+  };
+</script>
+
+```
+
+route/routes.js
+```
+export const routes = [
+  {
+    path: '/',
+    component: () => import('@/views/Home.vue'),
+  },
+  //.......
+  {
+    path: '/pdfViewer',
+    component: () => import('@/views/pdfViewer/index.vue'),
+    name: 'pdfViewer',
+  },
+];
+
+```
+其他页面跳转到pdfViewer带上pdf的url,需要后台允许跨域(参考https://github.com/goSunadeod/vue-pdf.js-demo)
+```
+previewFile({
+  documentId: fileId,
+  caseId: this.caseId,
+}).then((res) => {
+  const fileUrl = res.data;
+  this.$router.push({ name: 'pdfViewer', params: { fileUrl } });
+});
+```
