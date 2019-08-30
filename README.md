@@ -868,3 +868,60 @@ wx.createSelectorQuery()
 
 
 ```
+
+### wepy 1.X 循环渲染组件碰到的坑
+
+#### 用wx:for 循环出来的几个组件，状态都是最后一个组件的状态
+解决办法: 用repeat组件来做循环
+
+父组件template
+```
+<repeat for="{{keyValuePairList}}" index="index" item="item" key="index">
+  <KeyValuePair
+    :keyName.sync="item.keyName"
+    :placeholder.sync="item.placeholder"
+    :isLink="item.isLink"
+    @setValue.user="setValue"/>
+</repeat>
+```
+子组件script
+```
+export default class KeyValuePair extends wepy.component {
+    props = {
+      keyName: {
+        type: String,
+        default: '姓名',
+        twoWay: true
+      },
+      placeholder: {
+        type: String,
+        default: '请输入',
+        twoWay: true
+      },
+      isLink: {
+        type: [Boolean, String],
+        coerce(v) {
+          return typeof v === 'string' ? JSON.parse(v) : v //这么写来解决父组件传Boolean时，子组件收不到的问题
+        },
+        default: false,
+      }
+    }
+    methods = {
+      handleInput: (e) => {
+        this.$emit('setValue', e.detail.value, this.keyName)  
+      }
+    }
+  }
+```
+
+发现了另一个问题，子组件打印this.keyName是undefined。(页面展示是对的)
+解决办法: 
+> WePY 1.x 版本中，组件使用的是静态编译组件，即组件是在编译阶段编译进页面的，每个组件都是唯一的一个实例，目前只提供简单的 repeat 支持。不支持在 repeat 的组件中去使用 props, computed, watch 等等特性。
+所以只能对于需要在方法中获取prop值的情况，只能在父组件的component里声明不同的单独组件
+```
+components = {
+  KeyValuePair_0: KeyValuePair,
+  KeyValuePair_1: KeyValuePair,
+  KeyValuePair_2: KeyValuePair,
+}
+```
