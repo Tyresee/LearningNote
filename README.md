@@ -857,3 +857,14 @@ previewFile({
   this.$router.push({ name: 'pdfViewer', params: { fileUrl } });
 });
 ```
+### 小程序选择dom元素，是一个异步api
+
+```
+wx.createSelectorQuery()
+.select('#slider')
+.boundingClientRect(res => {
+  sliderWidth = res.width
+}).exec()
+
+
+```
