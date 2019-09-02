@@ -925,3 +925,50 @@ components = {
   KeyValuePair_2: KeyValuePair,
 }
 ```
+
+### 父元素overflow-x: scroll；padding: 0 35rpx; 发现右边的padding没有生效(最右边的子元素是贴着父元素最右边)
+
+解决办法：给最后一个元素加个伪元素，撑开右边
+HTML
+```
+<view class="options-wrapper">
+  <view class="option" wx:for="{{optionList}}">{{item.name}}</view>
+</view>
+```
+CSS
+```
+.options-wrapper{
+ width: 750rpx;
+ overflow-x: scroll;
+ box-sizing: border-box;
+ padding:0 37rpx;
+ display: flex;
+
+ >.option{
+   height: 56rpx;
+   line-height: 56rpx;
+   flex-shrink: 0;
+   text-align: center;
+   padding: 0 24rpx;
+   border-radius: 5rpx;
+   border: solid 1rpx #4f8ff3;
+   font-size: 28rpx;
+   color: #4f8ff3;
+   margin-right: 30rpx;
+   margin-top: 37rpx;
+
+   &:last-child{
+    position: relative;
+     &::after{
+       content: '';
+       position: absolute;
+       height: 1rpx;
+       width: 37rpx;
+       right: -37rpx;
+       opacity: 0;
+     }
+   }
+  }
+}
+```
+
