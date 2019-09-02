@@ -972,3 +972,10 @@ CSS
 }
 ```
 
+### 父元素display: flex; 子元素左对齐(除了最右边的子元素)，最右边的子元素右对齐
+解决办法: 给最右边的子元素加上margin-left: auto
+参考文档： 
+</br>
+[最右边子元素右对齐，其他子元素左对齐](https://stackoverflow.com/questions/49658425/flexbox-justify-self-flex-end-not-working?noredirect=1&lq=1)  
+</br>
+[最左边子元素左对齐，其他子元素右对齐](https://stackoverflow.com/questions/23621650/how-to-justify-a-single-flexbox-item-override-justify-content)
